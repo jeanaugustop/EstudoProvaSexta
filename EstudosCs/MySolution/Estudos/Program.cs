@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Estudos.Model;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>();
@@ -12,10 +13,19 @@ app.MapGet("/", () => "Hello World!");
 // Produto ----------
 
 // Criação / Cadastro
-app.MapPost("/produto", async (Produto produto, AppDbContext context) =>
+app.MapPost("/produto", ([FromBody]Produto produto, [FromServices] AppDbContext context) =>
 {
+    //Validar se a Empresa Existe
+    Empresa? empresa =
+        context.Empresas.Find(produto.EmpresaId);
+
+    if (empresa is null)
+        return Results.NotFound("Empresa nao encontrada");
+
+    produto.Empresa = empresa;
+
     context.Add(produto);
-    await context.SaveChangesAsync();
+    context.SaveChangesAsync();
     return Results.Created($"/produto/{produto.Id}", produto);
 });
 

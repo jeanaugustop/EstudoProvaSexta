@@ -24,7 +24,6 @@ namespace Estudos.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -38,11 +37,10 @@ namespace Estudos.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EmpresaId")
+                    b.Property<int?>("EmpresaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal?>("Preco")
@@ -58,17 +56,10 @@ namespace Estudos.Migrations
             modelBuilder.Entity("Estudos.Model.Produto", b =>
                 {
                     b.HasOne("Estudos.Model.Empresa", "Empresa")
-                        .WithMany("Produtos")
-                        .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("EmpresaId");
 
                     b.Navigation("Empresa");
-                });
-
-            modelBuilder.Entity("Estudos.Model.Empresa", b =>
-                {
-                    b.Navigation("Produtos");
                 });
 #pragma warning restore 612, 618
         }

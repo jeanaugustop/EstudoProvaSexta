@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9W4MC7AY5l+UKfRyHHxQEHpxWQhikNgZDZfBadvref0GOv3JYZHUpEy7KMEclvXJ+Zr5cTR+SgRDSIMD57uEzw==",
+  "dgSpecHash": "d4IJf4GW0RSUwDUEwJ8iifjjDZyBVrgDZfAN+gxwWOMAtcFE5UmjkapemPec8FBM+3kzKwxnBW62vhUfe/6QUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jean\\Desktop\\EstudosCs\\MySolution\\Estudos\\Estudos.csproj",
+  "projectFilePath": "C:\\Users\\Jean\\Desktop\\EstudoProvaSexta\\EstudosCs\\MySolution\\Estudos\\Estudos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jean\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Jean\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

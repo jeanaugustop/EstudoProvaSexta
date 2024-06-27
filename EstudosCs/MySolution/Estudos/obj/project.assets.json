@@ -2539,11 +2539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jean\\Desktop\\EstudosCs\\MySolution\\Estudos\\Estudos.csproj",
+      "projectUniqueName": "C:\\Users\\Jean\\Desktop\\EstudoProvaSexta\\EstudosCs\\MySolution\\Estudos\\Estudos.csproj",
       "projectName": "Estudos",
-      "projectPath": "C:\\Users\\Jean\\Desktop\\EstudosCs\\MySolution\\Estudos\\Estudos.csproj",
+      "projectPath": "C:\\Users\\Jean\\Desktop\\EstudoProvaSexta\\EstudosCs\\MySolution\\Estudos\\Estudos.csproj",
       "packagesPath": "C:\\Users\\Jean\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jean\\Desktop\\EstudosCs\\MySolution\\Estudos\\obj\\",
+      "outputPath": "C:\\Users\\Jean\\Desktop\\EstudoProvaSexta\\EstudosCs\\MySolution\\Estudos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jean\\AppData\\Roaming\\NuGet\\NuGet.Config"
