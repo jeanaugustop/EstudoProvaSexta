@@ -1,1 +1,10 @@
 https://chatgpt.com/share/d05193ba-563f-4a70-abf3-026bb544cfec
+
+front com fetch
+https://github.com/dideconto/2024-topicos-especiais-em-sistemas-sexta/blob/master/front/src/components/pages/produto/produto-cadastrar.tsx
+
+com axios
+https://github.com/dideconto/topicossexta/blob/master/prova_2bimestre/fronto_prova/src/components/pages/CadastrarDespesa.tsx
+
+back
+https://github.com/dideconto/2024-topicos-especiais-em-sistemas-sexta/blob/master/API/API/Program.cs
