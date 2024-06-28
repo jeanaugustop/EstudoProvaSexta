@@ -8,6 +8,6 @@ public class Produto
 
     public int? EmpresaId { get; set;}
     //Relacionamento um pra muitos /  No caso um produto só pode ter uma empresa e uma empresa pode ter varios produtos
-    public Empresa? Empresa { get; set;}
+    public Empresa Empresa { get; set;} = null!;
 
 }

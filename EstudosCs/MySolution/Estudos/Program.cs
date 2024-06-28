@@ -25,30 +25,30 @@ app.MapPost("/produto", ([FromBody]Produto produto, [FromServices] AppDbContext 
     produto.Empresa = empresa;
 
     context.Add(produto);
-    context.SaveChangesAsync();
+    context.SaveChanges();
     return Results.Created($"/produto/{produto.Id}", produto);
 });
 
 // Leitura // Lista
-app.MapGet("/produtos", async (AppDbContext context) =>
+app.MapGet("/produtos", ([FromServices] AppDbContext context) =>
 {
-    var produtos = await context.Produtos.ToListAsync();
+    var produtos = context.Produtos.ToList();
     return Results.Ok(produtos);
 });
 
 // Produtos por Nome // Listar por Nome
-app.MapGet("/produtos/nome/{nome}", async (string nome, AppDbContext context) =>
+app.MapGet("/produtos/nome/{nome}", (string nome, AppDbContext context) =>
 {
-    var produtos = await context.Produtos
-                                .Where(p => p.Nome.Contains(nome))
-                                .ToListAsync();
+    var produtos = context.Produtos
+                            .Where(p => p.Nome != null && p.Nome.Contains(nome))
+                            .ToList();
     return produtos.Any() ? Results.Ok(produtos) : Results.NotFound("Nenhum produto encontrado.");
 });
 
 // Atualizar Produto
-app.MapPut("/produtos/{id}", async (int id, Produto produtoAtualizado, AppDbContext context) =>
+app.MapPut("/produtos/{id}", ([FromRoute]int id, [FromBody] Produto produtoAtualizado, [FromServices] AppDbContext context) =>
 {
-    var produto = await context.Produtos.FindAsync(id);
+    var produto = context.Produtos.Find(id);
     if (produto is null)
     {
         return Results.NotFound("Produto não encontrado.");
@@ -56,20 +56,36 @@ app.MapPut("/produtos/{id}", async (int id, Produto produtoAtualizado, AppDbCont
 
     produto.Nome = produtoAtualizado.Nome;
     produto.Preco = produtoAtualizado.Preco;
-    await context.SaveChangesAsync();
+    context.SaveChanges();
     return Results.Ok("Produto atualizado com sucesso.");
 });
 
 // Deletar Produto
-app.MapDelete("/produtos/{id}", async (int id, AppDbContext context) =>
+app.MapDelete("/produtos/{id}", (int id, AppDbContext context) =>
 {
-    var produto = await context.Produtos.FindAsync(id);
+    var produto = context.Produtos.Find(id);
     if (produto is null)
     {
         return Results.NotFound("Produto não encontrado.");
     }
 
     context.Produtos.Remove(produto);
-    await context.SaveChangesAsync();
+    context.SaveChanges();
     return Results.Ok("Produto removido com sucesso.");
+});
+
+//Empresa ----------------
+
+app.MapPost("/empresa", ([FromBody]Empresa empresa, [FromServices] AppDbContext context) =>
+{
+    context.Add(empresa);
+    context.SaveChanges();
+    return Results.Created($"/empresa/{empresa.Id}", empresa);
+});
+
+// Leitura // Lista
+app.MapGet("/empresas", ([FromServices] AppDbContext context) =>
+{
+    var produtos = context.Produtos.ToList();
+    return Results.Ok(produtos);
 });
